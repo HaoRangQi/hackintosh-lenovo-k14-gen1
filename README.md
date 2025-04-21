@@ -1,4 +1,4 @@
-# Hackintosh EFI for ThinkPad X13 Gen 2 Ryzen 5600U
+# Hackintosh EFI for ThinkPad X13 Gen 2 / lenovo-k14-gen1 Ryzen 5600U
 [![](https://img.shields.io/badge/macOS-Ventura_13.4.1-orange.svg)](https://www.apple.com/macos/ventura/)
 [![](https://img.shields.io/badge/OpenCore-0.9.3-blue.svg)](https://github.com/acidanthera/OpenCorePkg)
 [![](https://img.shields.io/badge/translation-english-green.svg)](./docs/README_EN.md)
