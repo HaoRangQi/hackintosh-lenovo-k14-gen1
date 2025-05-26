@@ -1,0 +1,1898 @@
+{
+  "cpuType": "CpuType.amd",
+  "platformType": "PlatformType.laptop",
+  "plantformIndex": 0,
+  "macOSVersion": "Sequoia 15",
+  "pentiumOrCeleron": false,
+  "isCometLakeU62": false,
+  "deleteWhateverGreen": false,
+  "uefiSupport": true,
+  "soundCardType": "",
+  "alcid": 1,
+  "enableHpetPatch": false,
+  "hpetPath": "\\_SB.PCI0.LPCB.HPET",
+  "processorType": "ProcessorType.Type1537",
+  "customCPUName": "Ryzen 5600U",
+  "brand": "Brand.nil",
+  "specialMainBoard": "SpecialMainBoard.nil",
+  "soundDriverType": "SoundDriverType.AppleALC",
+  "netWorkTypes": [
+    "NetWorkType.RealtekRTL8111"
+  ],
+  "wifiTypes": [
+    "WiFiType.BCM94360"
+  ],
+  "usbDriverType": "USBDriverType.USBToolBox",
+  "uefiQuirksType": "UEFIQuirksType.nil",
+  "utbMapPath": "D:\\blackTools\\OpenCore-1.0.4 -use\\UTBMap.kext",
+  "csrsetting": "CSRSETTING.CSRFF0F0000",
+  "optionalKexts": [
+    "OptionalKext.AMDRyzenCPUPowerManagement",
+    "OptionalKext.SMCAMDProcessor",
+    "OptionalKext.GenericUSBXHCI",
+    "OptionalKext.BFixup",
+    "OptionalKext.HoRNDIS"
+  ],
+  "optionalLaptopKexts": [
+    "OptionalLaptopKext.SMCBatteryManager",
+    "OptionalLaptopKext.VoodooPS2Controller_VoodooPS2ControllerVoodooPS2Keyboard_VoodooI2CVoodooInput_VoodooI2CVoodooI2CServices_VoodooI2CVoodooGPIO_VoodooI2C_VoodooI2CHID",
+    "OptionalLaptopKext.YogaSMC"
+  ],
+  "bootArgModels": [
+    {
+      "arg": "-v",
+      "comment": "开启-V跑码(卡代码时方便定位发现错误)"
+    },
+    {
+      "arg": "keepsyms=1",
+      "comment": "添加keepsyms=1引导参数,便于mac系统在发生内核崩溃时打印更多符号信息,有助于排查问题.此参数通常搭配debug=0x100使用(首次调试引导时,强烈建议勾选)"
+    },
+    {
+      "arg": "debug=0x100",
+      "comment": "添加debug=0x100引导参数,禁用macOS的看门狗功能,该功能有助于防止在内核崩溃时自动重启,便于获取一些有用的信息，并通过这些线索解决问题(首次调试引导时,强烈建议勾选)"
+    },
+    {
+      "arg": "-wegnoegpu",
+      "comment": "禁用独显(通常intel双显卡笔记本独立显卡【常见于N卡】无法驱动时,建议勾选)"
+    },
+    {
+      "arg": "npci=0x3000",
+      "comment": "修复X58,X79,X99,AMD等平台卡ACPI Configuration begin问题(通常Above 4G Decoding没有打开时,添加npci=0x3000参数,注意和npci=0x2000二选一,常见于X58,X79,X99等服务器以及AMD平台)"
+    },
+    {
+      "arg": "brcmfx-country=HK",
+      "comment": "修复部分博通无线网卡速率较慢问题(更改博通WiFi国家码为香港,也可以更改路由器频段改善)"
+    },
+    {
+      "arg": "swd_panic=1",
+      "comment": "避免设备进入睡眠模式后重启的问题,便于获取内核崩溃日志,排查睡眠问题"
+    },
+    {
+      "arg": "applbkl=3",
+      "comment": "启用AMD Radeon RX 5000 系列显卡的PWM背光控制"
+    },
+    {
+      "arg": "-vi2c-force-polling",
+      "comment": "强制I2C类型触控板工作在轮询模式（polling mode）,而不是中断（interrupt-driven mode）驱动模式(中断模式通常需要定制SSDT,相对复杂.某些时候可以修复I2C触控板无法使用的问题(需要搭配VoodooI2C驱动使用)"
+    },
+    {
+      "arg": "alcid=1",
+      "comment": "声卡alcid"
+    }
+  ],
+  "iGPUHighLevelProperties": [],
+  "ryzenCPU": true,
+  "useRyzenGPU": true,
+  "usePrecastMMIO": false,
+  "edid": "",
+  "amdmlb": "AMDMLB.nomal",
+  "amdCore": "6",
+  "acpi": {
+    "acpiAddItems": [
+      {
+        "Comment": "By RapidEFI",
+        "Enabled": true,
+        "Path": "SSDT-EC-USBX-AMD.aml"
+      },
+      {
+        "Comment": "By RapidEFI",
+        "Enabled": true,
+        "Path": "SSDT-PLUG-ALT-AMD.aml"
+      },
+      {
+        "Comment": "By RapidEFI",
+        "Enabled": true,
+        "Path": "SSDT-PNLF-AMD.aml"
+      },
+      {
+        "Comment": "By RapidEFI",
+        "Enabled": true,
+        "Path": "SSDT-XOSI.aml"
+      }
+    ],
+    "acpiDeleteItems": [],
+    "acpiPatchItems": [
+      {
+        "Base": "",
+        "BaseSkip": 0,
+        "Comment": "_OSI to XOSI rename - requires SSDT-XOSI.aml",
+        "Count": 0,
+        "Enabled": true,
+        "Find": [
+          95,
+          79,
+          83,
+          73
+        ],
+        "Limit": 0,
+        "Mask": null,
+        "OemTableId": null,
+        "Replace": [
+          88,
+          79,
+          83,
+          73
+        ],
+        "ReplaceMask": null,
+        "Skip": 0,
+        "TableLength": 0,
+        "TableSignature": null
+      },
+      {
+        "Base": "\\_SB.PCI0.LPCB.HPET",
+        "BaseSkip": 0,
+        "Comment": "HPET _CRS to XCRS",
+        "Count": 1,
+        "Enabled": false,
+        "Find": [
+          95,
+          67,
+          82,
+          83
+        ],
+        "Limit": 0,
+        "Mask": null,
+        "OemTableId": null,
+        "Replace": [
+          88,
+          67,
+          82,
+          83
+        ],
+        "ReplaceMask": null,
+        "Skip": 0,
+        "TableLength": 0,
+        "TableSignature": null
+      }
+    ],
+    "acpiQuirks": {
+      "FadtEnableReset": false,
+      "NormalizeHeaders": false,
+      "RebaseRegions": false,
+      "ResetHwSig": false,
+      "ResetLogoStatus": true,
+      "SyncTableIds": false
+    }
+  },
+  "booter": {
+    "booterMmioWhitelistItems": [],
+    "booterPatchItems": [],
+    "booterQuirks": {
+      "AllowRelocationBlock": false,
+      "AvoidRuntimeDefrag": true,
+      "ClearTaskSwitchBit": false,
+      "DevirtualiseMmio": false,
+      "DisableSingleUser": false,
+      "DisableVariableWrite": false,
+      "DiscardHibernateMap": false,
+      "EnableSafeModeSlide": true,
+      "EnableWriteUnprotector": false,
+      "FixupAppleEfiImages": false,
+      "ForceBooterSignature": false,
+      "ForceExitBootServices": false,
+      "ProtectMemoryRegions": false,
+      "ProtectSecureBoot": false,
+      "ProtectUefiServices": false,
+      "ProvideCustomSlide": true,
+      "ProvideMaxSlide": 0,
+      "RebuildAppleMemoryMap": true,
+      "ResizeAppleGpuBars": 0,
+      "SetupVirtualMap": true,
+      "SignalAppleOS": false,
+      "SyncRuntimePermissions": true
+    }
+  },
+  "deviceProperties": {
+    "addList": [],
+    "deleteList": null
+  },
+  "kernel": {
+    "kernelKexts": [
+      {
+        "BundlePath": "Lilu.kext",
+        "Comment": "By RapidEFI",
+        "Enabled": true,
+        "ExecutablePath": "Contents/MacOS/Lilu",
+        "PlistPath": "Contents/Info.plist",
+        "MinKernel": "",
+        "MaxKernel": "",
+        "Arch": "Any"
+      },
+      {
+        "BundlePath": "VirtualSMC.kext",
+        "Comment": "By RapidEFI",
+        "Enabled": true,
+        "ExecutablePath": "Contents/MacOS/VirtualSMC",
+        "PlistPath": "Contents/Info.plist",
+        "MinKernel": "",
+        "MaxKernel": "",
+        "Arch": "Any"
+      },
+      {
+        "BundlePath": "WhateverGreen.kext",
+        "Comment": "By RapidEFI",
+        "Enabled": true,
+        "ExecutablePath": "Contents/MacOS/WhateverGreen",
+        "PlistPath": "Contents/Info.plist",
+        "MinKernel": "",
+        "MaxKernel": "",
+        "Arch": "Any"
+      }
+    ],
+    "kernelBlockItems": [
+      {
+        "Identifier": "com.apple.iokit.IOSkywalkFamily",
+        "Comment": "Fix Brcm&Intel WiFi",
+        "Enabled": true,
+        "Strategy": "Exclude",
+        "MinKernel": "23.0.0",
+        "MaxKernel": "",
+        "Arch": "Any"
+      }
+    ],
+    "kernelForceItems": null,
+    "kernelPatchItems": [
+      {
+        "Arch": "x86_64",
+        "Base": "_cpuid_set_info",
+        "Comment": "algrey | Force cpuid_cores_per_package to constant (user-specified) | 10.13-10.14 | added by RapidEFI",
+        "Count": 1,
+        "Enabled": true,
+        "Find": [
+          193,
+          232,
+          26,
+          0,
+          0,
+          0
+        ],
+        "Identifier": "kernel",
+        "Limit": 0,
+        "Mask": [
+          255,
+          253,
+          255,
+          0,
+          0,
+          0
+        ],
+        "MaxKernel": "18.99.99",
+        "MinKernel": "17.0.0",
+        "Replace": [
+          184,
+          6,
+          0,
+          0,
+          0,
+          0
+        ],
+        "ReplaceMask": [
+          255,
+          255,
+          255,
+          255,
+          255,
+          0
+        ],
+        "Skip": 0
+      },
+      {
+        "Arch": "x86_64",
+        "Base": "_cpuid_set_info",
+        "Comment": "algrey | Force cpuid_cores_per_package to constant (user-specified) | 10.15-11.0 | added by RapidEFI",
+        "Count": 1,
+        "Enabled": true,
+        "Find": [
+          193,
+          232,
+          26,
+          0,
+          0,
+          0
+        ],
+        "Identifier": "kernel",
+        "Limit": 0,
+        "Mask": [
+          255,
+          253,
+          255,
+          0,
+          0,
+          0
+        ],
+        "MaxKernel": "20.99.99",
+        "MinKernel": "19.0.0",
+        "Replace": [
+          186,
+          6,
+          0,
+          0,
+          0,
+          0
+        ],
+        "ReplaceMask": [
+          255,
+          255,
+          255,
+          255,
+          255,
+          0
+        ],
+        "Skip": 0
+      },
+      {
+        "Arch": "x86_64",
+        "Base": "_cpuid_set_info",
+        "Comment": "algrey | Force cpuid_cores_per_package to constant (user-specified) | 12.0-13.2 | added by RapidEFI",
+        "Count": 1,
+        "Enabled": true,
+        "Find": [
+          193,
+          232,
+          26,
+          0,
+          0,
+          0
+        ],
+        "Identifier": "kernel",
+        "Limit": 0,
+        "Mask": [
+          255,
+          253,
+          255,
+          0,
+          0,
+          0
+        ],
+        "MaxKernel": "22.3.99",
+        "MinKernel": "21.0.0",
+        "Replace": [
+          186,
+          6,
+          0,
+          0,
+          0,
+          144
+        ],
+        "ReplaceMask": [],
+        "Skip": 0
+      },
+      {
+        "Arch": "x86_64",
+        "Base": "_cpuid_set_info",
+        "Comment": "algrey | Force cpuid_cores_per_package to constant (user-specified) | 13.3+ | added by RapidEFI",
+        "Count": 1,
+        "Enabled": true,
+        "Find": [
+          193,
+          232,
+          26,
+          0,
+          0
+        ],
+        "Identifier": "kernel",
+        "Limit": 0,
+        "Mask": [
+          255,
+          253,
+          255,
+          0,
+          0
+        ],
+        "MaxKernel": "24.99.99",
+        "MinKernel": "22.4.0",
+        "Replace": [
+          186,
+          6,
+          0,
+          0,
+          0
+        ],
+        "ReplaceMask": [
+          255,
+          255,
+          255,
+          255,
+          255
+        ],
+        "Skip": 0
+      },
+      {
+        "Arch": "x86_64",
+        "Base": "",
+        "Comment": "algrey | _commpage_populate | Remove rdmsr | 10.13+ | added by RapidEFI",
+        "Count": 1,
+        "Enabled": true,
+        "Find": [
+          185,
+          160,
+          1,
+          0,
+          0,
+          15,
+          50
+        ],
+        "Identifier": "kernel",
+        "Limit": 0,
+        "Mask": [],
+        "MaxKernel": "24.99.99",
+        "MinKernel": "17.0.0",
+        "Replace": [
+          102,
+          144,
+          102,
+          144,
+          102,
+          144,
+          144
+        ],
+        "ReplaceMask": [],
+        "Skip": 0
+      },
+      {
+        "Arch": "x86_64",
+        "Base": "",
+        "Comment": "algrey | _cpuid_set_cache_info | Set CPUID proper instead of 4 | 10.13+ | added by RapidEFI",
+        "Count": 1,
+        "Enabled": true,
+        "Find": [
+          184,
+          4,
+          0,
+          0,
+          0,
+          68,
+          137,
+          241,
+          68,
+          137
+        ],
+        "Identifier": "kernel",
+        "Limit": 0,
+        "Mask": [],
+        "MaxKernel": "24.99.99",
+        "MinKernel": "17.0.0",
+        "Replace": [
+          184,
+          29,
+          0,
+          0,
+          128,
+          68,
+          137,
+          241,
+          68,
+          137
+        ],
+        "ReplaceMask": [],
+        "Skip": 0
+      },
+      {
+        "Arch": "x86_64",
+        "Base": "",
+        "Comment": "algrey | _cpuid_set_generic_info | Remove wrmsr(0x8B) | 10.13+ | added by RapidEFI",
+        "Count": 1,
+        "Enabled": true,
+        "Find": [
+          185,
+          139,
+          0,
+          0,
+          0,
+          49,
+          192,
+          49,
+          210,
+          15,
+          48
+        ],
+        "Identifier": "kernel",
+        "Limit": 0,
+        "Mask": [],
+        "MaxKernel": "24.99.99",
+        "MinKernel": "17.0.0",
+        "Replace": [
+          102,
+          144,
+          102,
+          144,
+          102,
+          144,
+          102,
+          144,
+          102,
+          144,
+          144
+        ],
+        "ReplaceMask": [],
+        "Skip": 0
+      },
+      {
+        "Arch": "x86_64",
+        "Base": "",
+        "Comment": "algrey | _cpuid_set_generic_info | Replace rdmsr(0x8B) with constant 186 | 10.13+ | added by RapidEFI",
+        "Count": 1,
+        "Enabled": true,
+        "Find": [
+          185,
+          139,
+          0,
+          0,
+          0,
+          15,
+          50
+        ],
+        "Identifier": "kernel",
+        "Limit": 0,
+        "Mask": [],
+        "MaxKernel": "24.99.99",
+        "MinKernel": "17.0.0",
+        "Replace": [
+          186,
+          186,
+          0,
+          0,
+          0,
+          102,
+          144
+        ],
+        "ReplaceMask": [],
+        "Skip": 0
+      },
+      {
+        "Arch": "x86_64",
+        "Base": "",
+        "Comment": "algrey | _cpuid_set_generic_info | Set flag=1 | 10.13+ | added by RapidEFI",
+        "Count": 1,
+        "Enabled": true,
+        "Find": [
+          185,
+          23,
+          0,
+          0,
+          0,
+          15,
+          50,
+          193,
+          234,
+          18,
+          128,
+          226,
+          7
+        ],
+        "Identifier": "kernel",
+        "Limit": 0,
+        "Mask": [],
+        "MaxKernel": "24.99.99",
+        "MinKernel": "17.0.0",
+        "Replace": [
+          178,
+          1,
+          102,
+          15,
+          31,
+          132,
+          0,
+          0,
+          0,
+          0,
+          0,
+          102,
+          144
+        ],
+        "ReplaceMask": [],
+        "Skip": 0
+      },
+      {
+        "Arch": "x86_64",
+        "Base": "",
+        "Comment": "algrey | _cpuid_set_generic_info | Disable check to allow leaf7 | 10.13+ | added by RapidEFI",
+        "Count": 1,
+        "Enabled": true,
+        "Find": [
+          0,
+          58,
+          15,
+          130
+        ],
+        "Identifier": "kernel",
+        "Limit": 0,
+        "Mask": [],
+        "MaxKernel": "23.99.99",
+        "MinKernel": "17.0.0",
+        "Replace": [
+          0,
+          0,
+          15,
+          130
+        ],
+        "ReplaceMask": [],
+        "Skip": 0
+      },
+      {
+        "Arch": "x86_64",
+        "Base": "",
+        "Comment": "algrey | _cpuid_set_generic_info | Disable check to allow leaf7 | 15.x | added by RapidEFI",
+        "Count": 1,
+        "Enabled": true,
+        "Find": [
+          0,
+          5,
+          15,
+          130
+        ],
+        "Identifier": "kernel",
+        "Limit": 0,
+        "Mask": [],
+        "MaxKernel": "24.99.99",
+        "MinKernel": "24.0.0",
+        "Replace": [
+          0,
+          0,
+          15,
+          130
+        ],
+        "ReplaceMask": [],
+        "Skip": 0
+      },
+      {
+        "Arch": "x86_64",
+        "Base": "",
+        "Comment": "algrey | _cpuid_set_info | GenuineIntel to AuthenticAMD | 10.13-11.0 | added by RapidEFI",
+        "Count": 1,
+        "Enabled": true,
+        "Find": [
+          71,
+          101,
+          110,
+          117,
+          105,
+          110,
+          101,
+          73,
+          110,
+          116,
+          101,
+          108,
+          0
+        ],
+        "Identifier": "kernel",
+        "Limit": 0,
+        "Mask": [],
+        "MaxKernel": "20.99.99",
+        "MinKernel": "17.0.0",
+        "Replace": [
+          65,
+          117,
+          116,
+          104,
+          101,
+          110,
+          116,
+          105,
+          99,
+          65,
+          77,
+          68,
+          0
+        ],
+        "ReplaceMask": [],
+        "Skip": 0
+      },
+      {
+        "Arch": "x86_64",
+        "Base": "_cpuid_set_info",
+        "Comment": "Goldfish64, algrey | Bypass GenuineIntel check panic | 12.0+ | added by RapidEFI",
+        "Count": 1,
+        "Enabled": true,
+        "Find": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          49,
+          210,
+          179,
+          1
+        ],
+        "Identifier": "kernel",
+        "Limit": 0,
+        "Mask": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          255,
+          255,
+          255,
+          255
+        ],
+        "MaxKernel": "24.99.99",
+        "MinKernel": "21.0.0",
+        "Replace": [
+          144,
+          144,
+          144,
+          144,
+          144,
+          144,
+          49,
+          210,
+          179,
+          1
+        ],
+        "ReplaceMask": [],
+        "Skip": 0
+      },
+      {
+        "Arch": "x86_64",
+        "Base": "",
+        "Comment": "algrey | _cpuid_set_cpufamily | Force CPUFAMILY_INTEL_PENRYN | 10.13-11.2 | added by RapidEFI",
+        "Count": 1,
+        "Enabled": true,
+        "Find": [
+          49,
+          219,
+          128,
+          61,
+          0,
+          0,
+          0,
+          0,
+          6,
+          117,
+          0
+        ],
+        "Identifier": "kernel",
+        "Limit": 0,
+        "Mask": [
+          255,
+          255,
+          255,
+          255,
+          0,
+          0,
+          0,
+          255,
+          255,
+          255,
+          0
+        ],
+        "MaxKernel": "20.3.0",
+        "MinKernel": "17.0.0",
+        "Replace": [
+          187,
+          188,
+          79,
+          234,
+          120,
+          233,
+          93,
+          0,
+          0,
+          0,
+          144
+        ],
+        "ReplaceMask": [],
+        "Skip": 0
+      },
+      {
+        "Arch": "x86_64",
+        "Base": "_cpuid_set_info",
+        "Comment": "algrey | _cpuid_set_cpufamily | Force CPUFAMILY_INTEL_PENRYN | 11.3+ | added by RapidEFI",
+        "Count": 1,
+        "Enabled": true,
+        "Find": [
+          128,
+          61,
+          0,
+          0,
+          0,
+          0,
+          6,
+          117
+        ],
+        "Identifier": "kernel",
+        "Limit": 0,
+        "Mask": [
+          255,
+          255,
+          0,
+          0,
+          0,
+          0,
+          255,
+          255
+        ],
+        "MaxKernel": "24.99.99",
+        "MinKernel": "20.4.0",
+        "Replace": [
+          186,
+          188,
+          79,
+          234,
+          120,
+          49,
+          219,
+          235
+        ],
+        "ReplaceMask": [],
+        "Skip": 0
+      },
+      {
+        "Arch": "x86_64",
+        "Base": "",
+        "Comment": "algrey | _i386_init | Remove 3 rdmsr calls | 10.13+ | added by RapidEFI",
+        "Count": 0,
+        "Enabled": true,
+        "Find": [
+          185,
+          153,
+          1,
+          0,
+          0,
+          15,
+          50,
+          72,
+          193,
+          226,
+          32,
+          137,
+          198,
+          72,
+          9,
+          214,
+          185,
+          152,
+          1,
+          0,
+          0,
+          15,
+          50,
+          72,
+          193,
+          226,
+          32,
+          137,
+          192,
+          72,
+          9,
+          194,
+          191,
+          88,
+          2,
+          49,
+          5,
+          49,
+          201,
+          69,
+          49,
+          192
+        ],
+        "Identifier": "kernel",
+        "Limit": 0,
+        "Mask": [],
+        "MaxKernel": "24.99.99",
+        "MinKernel": "17.0.0",
+        "Replace": [
+          102,
+          15,
+          31,
+          132,
+          0,
+          0,
+          0,
+          0,
+          0,
+          102,
+          15,
+          31,
+          132,
+          0,
+          0,
+          0,
+          0,
+          0,
+          102,
+          15,
+          31,
+          132,
+          0,
+          0,
+          0,
+          0,
+          0,
+          102,
+          15,
+          31,
+          132,
+          0,
+          0,
+          0,
+          0,
+          0,
+          102,
+          15,
+          31,
+          68,
+          0,
+          0
+        ],
+        "ReplaceMask": [],
+        "Skip": 0
+      },
+      {
+        "Arch": "x86_64",
+        "Base": "",
+        "Comment": "algrey, XLNC | Remove version check and panic | 10.13+ | added by RapidEFI",
+        "Count": 1,
+        "Enabled": true,
+        "Find": [
+          37,
+          252,
+          0,
+          0,
+          0,
+          131,
+          248,
+          19
+        ],
+        "Identifier": "kernel",
+        "Limit": 0,
+        "Mask": [],
+        "MaxKernel": "24.99.99",
+        "MinKernel": "17.0.0",
+        "Replace": [
+          37,
+          252,
+          0,
+          0,
+          0,
+          15,
+          31,
+          0
+        ],
+        "ReplaceMask": [],
+        "Skip": 0
+      },
+      {
+        "Arch": "x86_64",
+        "Base": "__ZN11IOPCIBridge13probeBusGatedEP14probeBusParams",
+        "Comment": "CaseySJ | probeBusGated | Disable 10 bit tags | 12.0+ | added by RapidEFI",
+        "Count": 1,
+        "Enabled": true,
+        "Find": [
+          224,
+          17,
+          114,
+          0
+        ],
+        "Identifier": "com.apple.iokit.IOPCIFamily",
+        "Limit": 0,
+        "Mask": [
+          240,
+          255,
+          255,
+          240
+        ],
+        "MaxKernel": "24.99.99",
+        "MinKernel": "21.0.0",
+        "Replace": [
+          0,
+          0,
+          3,
+          0
+        ],
+        "ReplaceMask": [
+          0,
+          0,
+          15,
+          0
+        ],
+        "Skip": 0
+      },
+      {
+        "Arch": "x86_64",
+        "Base": "__ZN17IOPCIConfigurator18IOPCIIsHotplugPortEP16IOPCIConfigEntry",
+        "Comment": "CaseySJ | IOPCIIsHotplugPort | Fix PCI bus enumeration on AM5 | 13.0+ | added by RapidEFI",
+        "Count": 1,
+        "Enabled": false,
+        "Find": [
+          132,
+          0,
+          117,
+          75
+        ],
+        "Identifier": "com.apple.iokit.IOPCIFamily",
+        "Limit": 0,
+        "Mask": [
+          255,
+          0,
+          255,
+          255
+        ],
+        "MaxKernel": "24.99.99",
+        "MinKernel": "22.0.0",
+        "Replace": [
+          0,
+          0,
+          235,
+          0
+        ],
+        "ReplaceMask": [
+          0,
+          0,
+          255,
+          0
+        ],
+        "Skip": 0
+      },
+      {
+        "Arch": "x86_64",
+        "Base": "",
+        "Comment": "Visual | thread_quantum_expire, thread_unblock, thread_invoke | Remove non-monotonic time panic | 12.0+ | added by RapidEFI",
+        "Count": 3,
+        "Enabled": true,
+        "Find": [
+          72,
+          0,
+          0,
+          0,
+          2,
+          0,
+          0,
+          72,
+          0,
+          0,
+          88,
+          0,
+          0,
+          0,
+          15,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "Identifier": "kernel",
+        "Limit": 0,
+        "Mask": [
+          255,
+          0,
+          0,
+          15,
+          255,
+          255,
+          255,
+          255,
+          0,
+          0,
+          255,
+          0,
+          0,
+          0,
+          255,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "MaxKernel": "24.99.99",
+        "MinKernel": "21.0.0",
+        "Replace": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          102,
+          144,
+          102,
+          144,
+          102,
+          144
+        ],
+        "ReplaceMask": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255
+        ],
+        "Skip": 0
+      },
+      {
+        "Arch": "x86_64",
+        "Base": "",
+        "Comment": "Visual | thread_invoke, thread_dispatch | Remove non-monotonic time panic | 12.0+ | added by RapidEFI",
+        "Count": 2,
+        "Enabled": true,
+        "Find": [
+          72,
+          0,
+          0,
+          128,
+          4,
+          0,
+          0,
+          15,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "Identifier": "kernel",
+        "Limit": 0,
+        "Mask": [
+          72,
+          0,
+          0,
+          240,
+          255,
+          255,
+          255,
+          255,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "MaxKernel": "24.99.99",
+        "MinKernel": "21.0.0",
+        "Replace": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          102,
+          144,
+          102,
+          144,
+          102,
+          144
+        ],
+        "ReplaceMask": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255
+        ],
+        "Skip": 0
+      },
+      {
+        "Arch": "x86_64",
+        "Base": "",
+        "Comment": "algrey | _mtrr_update_action | fix PAT | 10.13+ | added by RapidEFI",
+        "Count": 0,
+        "Enabled": true,
+        "Find": [
+          137,
+          192,
+          129,
+          226,
+          255,
+          255,
+          0,
+          255,
+          129,
+          202,
+          0,
+          0,
+          1,
+          0,
+          185,
+          119,
+          2,
+          0,
+          0
+        ],
+        "Identifier": "kernel",
+        "Limit": 0,
+        "Mask": [
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          15,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255
+        ],
+        "MaxKernel": "23.99.99",
+        "MinKernel": "17.0.0",
+        "Replace": [
+          185,
+          119,
+          2,
+          0,
+          0,
+          184,
+          6,
+          1,
+          7,
+          0,
+          186,
+          6,
+          1,
+          7,
+          0,
+          15,
+          31,
+          64,
+          0
+        ],
+        "ReplaceMask": [],
+        "Skip": 0
+      },
+      {
+        "Arch": "x86_64",
+        "Base": "",
+        "Comment": "Shaneee | _mtrr_update_action | Fix PAT | 10.13+ | added by RapidEFI",
+        "Count": 0,
+        "Enabled": false,
+        "Find": [
+          137,
+          192,
+          129,
+          226,
+          255,
+          255,
+          0,
+          255,
+          129,
+          202,
+          0,
+          0,
+          1,
+          0,
+          185,
+          119,
+          2,
+          0,
+          0
+        ],
+        "Identifier": "kernel",
+        "Limit": 0,
+        "Mask": [
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          15,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255
+        ],
+        "MaxKernel": "23.99.99",
+        "MinKernel": "17.0.0",
+        "Replace": [
+          185,
+          119,
+          2,
+          0,
+          0,
+          184,
+          6,
+          6,
+          6,
+          6,
+          186,
+          6,
+          6,
+          6,
+          6,
+          15,
+          48,
+          15,
+          9
+        ],
+        "ReplaceMask": [],
+        "Skip": 0
+      },
+      {
+        "Arch": "x86_64",
+        "Base": "",
+        "Comment": "Algrey / Zormeister | _mtrr_update_action | Fix PAT | 15+ | added by RapidEFI",
+        "Count": 0,
+        "Enabled": true,
+        "Find": [
+          137,
+          192,
+          129,
+          226,
+          255,
+          255,
+          0,
+          255,
+          129,
+          202,
+          0,
+          0,
+          0,
+          0,
+          15,
+          48
+        ],
+        "Identifier": "kernel",
+        "Limit": 0,
+        "Mask": [
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          0,
+          0,
+          0,
+          0,
+          255,
+          255
+        ],
+        "MaxKernel": "24.99.99",
+        "MinKernel": "24.0.0",
+        "Replace": [
+          137,
+          192,
+          184,
+          6,
+          1,
+          7,
+          0,
+          186,
+          6,
+          1,
+          7,
+          0,
+          15,
+          48,
+          144,
+          144
+        ],
+        "ReplaceMask": [],
+        "Skip": 0
+      },
+      {
+        "Arch": "x86_64",
+        "Base": "",
+        "Comment": "Shaneee / Zormeister | _mtrr_update_action | Fix PAT | 15+ | added by RapidEFI",
+        "Count": 0,
+        "Enabled": false,
+        "Find": [
+          137,
+          192,
+          129,
+          226,
+          255,
+          255,
+          0,
+          255,
+          129,
+          202,
+          0,
+          0,
+          0,
+          0,
+          15,
+          48
+        ],
+        "Identifier": "kernel",
+        "Limit": 0,
+        "Mask": [
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          0,
+          0,
+          0,
+          0,
+          255,
+          255
+        ],
+        "MaxKernel": "24.99.99",
+        "MinKernel": "24.0.0",
+        "Replace": [
+          137,
+          192,
+          184,
+          6,
+          6,
+          6,
+          6,
+          186,
+          6,
+          6,
+          6,
+          6,
+          15,
+          48,
+          144,
+          144
+        ],
+        "ReplaceMask": [],
+        "Skip": 0
+      }
+    ],
+    "kernelEmulate": {
+      "Cpuid1Data": null,
+      "Cpuid1Mask": null,
+      "DummyPowerManagement": true,
+      "MaxKernel": "",
+      "MinKernel": ""
+    },
+    "kernelQuirks": {
+      "AppleCpuPmCfgLock": false,
+      "AppleXcpmCfgLock": false,
+      "AppleXcpmExtraMsrs": false,
+      "AppleXcpmForceBoost": false,
+      "CustomSMBIOSGuid": true,
+      "CustomPciSerialDevice": false,
+      "DisableIoMapper": false,
+      "DisableIoMapperMapping": false,
+      "DisableLinkeditJettison": true,
+      "DisableRtcChecksum": false,
+      "ExtendBTFeatureFlags": false,
+      "ExternalDiskIcons": false,
+      "ForceAquantiaEthernet": false,
+      "ForceSecureBootScheme": false,
+      "IncreasePciBarSize": false,
+      "LapicKernelPanic": false,
+      "LegacyCommpage": false,
+      "PanicNoKextDump": true,
+      "PowerTimeoutKernelPanic": true,
+      "ProvideCurrentCpuInfo": true,
+      "SetApfsTrimTimeout": -1,
+      "ThirdPartyDrives": false,
+      "XhciPortLimit": true
+    },
+    "kernelScheme": {
+      "CustomKernel": false,
+      "FuzzyMatch": true,
+      "KernelArch": "Auto",
+      "KernelCache": "Auto"
+    }
+  },
+  "misc": {
+    "MiscBoot": {
+      "ConsoleAttributes": 0,
+      "HibernateMode": "None",
+      "HibernateSkipsPicker": false,
+      "HideAuxiliary": true,
+      "InstanceIdentifier": "",
+      "LauncherOption": "Disabled",
+      "LauncherPath": "Default",
+      "PickerAttributes": 145,
+      "PickerAudioAssist": false,
+      "PickerMode": "External",
+      "PickerVariant": "Acidanthera\\GoldenGate",
+      "PollAppleHotKeys": true,
+      "ShowPicker": true,
+      "TakeoffDelay": 0,
+      "Timeout": 5
+    },
+    "MiscDebug": {
+      "AppleDebug": false,
+      "ApplePanic": false,
+      "DisableWatchDog": false,
+      "DisplayDelay": 0,
+      "DisplayLevel": 2147483650,
+      "LogModules": "*",
+      "SysReport": false,
+      "Target": 3
+    },
+    "MiscSecurity": {
+      "AllowSetDefault": true,
+      "ApECID": 0,
+      "AuthRestart": false,
+      "BlacklistAppleUpdate": true,
+      "DmgLoading": "Signed",
+      "EnablePassword": false,
+      "ExposeSensitiveData": 6,
+      "HaltLevel": 2147483648,
+      "PasswordHash": null,
+      "PasswordSalt": null,
+      "ScanPolicy": 0,
+      "SecureBootModel": "Disabled",
+      "Vault": "Optional"
+    },
+    "MiscToolsItems": [
+      {
+        "Arguments": "",
+        "Auxiliary": true,
+        "Comment": "Uefi Shell Tool",
+        "Enabled": true,
+        "Flavour": "OpenShell:UEFIShell:Shell",
+        "FullNvramAccess": false,
+        "Name": "UEFI Shell",
+        "Path": "OpenShell.efi",
+        "RealPath": false,
+        "TextMode": false
+      }
+    ]
+  },
+  "nvram": {
+    "LegacyOverwrite": false,
+    "WriteFlash": true,
+    "Add": {
+      "addList": {
+        "4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14": [
+          {
+            "key": "DefaultBackgroundColor",
+            "dataType": "data",
+            "value": "00000000",
+            "comment": ""
+          }
+        ],
+        "4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102": [
+          {
+            "key": "rtc-blacklist",
+            "dataType": "data",
+            "value": "",
+            "comment": ""
+          },
+          {
+            "key": "revcpu",
+            "dataType": "integer",
+            "value": "1",
+            "comment": ""
+          },
+          {
+            "key": "revcpuname",
+            "dataType": "string",
+            "value": "Ryzen 5600U",
+            "comment": ""
+          }
+        ],
+        "7C436110-AB2A-4BBB-A880-FE41995C9F82": [
+          {
+            "key": "ForceDisplayRotationInEFI",
+            "dataType": "integer",
+            "value": "0",
+            "comment": ""
+          },
+          {
+            "key": "SystemAudioVolume",
+            "dataType": "data",
+            "value": "46",
+            "comment": ""
+          },
+          {
+            "key": "boot-args",
+            "dataType": "string",
+            "value": "-v keepsyms=1 debug=0x100 -wegnoegpu npci=0x3000 brcmfx-country=HK swd_panic=1 applbkl=3 -vi2c-force-polling alcid=1",
+            "comment": ""
+          },
+          {
+            "key": "csr-active-config",
+            "dataType": "data",
+            "value": "FF0F0000",
+            "comment": ""
+          },
+          {
+            "key": "prev-lang:kbd",
+            "dataType": "data",
+            "value": "7A682D48616E733A323532",
+            "comment": ""
+          },
+          {
+            "key": "run-efi-updater",
+            "dataType": "string",
+            "value": "No",
+            "comment": ""
+          },
+          {
+            "key": "bluetoothExternalDongleFailed",
+            "dataType": "data",
+            "value": "00",
+            "comment": ""
+          },
+          {
+            "key": "bluetoothInternalControllerInfo",
+            "dataType": "data",
+            "value": "0000000000000000000000000000",
+            "comment": ""
+          }
+        ]
+      }
+    },
+    "Delete": {
+      "deleteList": {
+        "4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14": [
+          {
+            "value": "DefaultBackgroundColor"
+          }
+        ],
+        "4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102": [
+          {
+            "value": "rtc-blacklist"
+          }
+        ],
+        "7C436110-AB2A-4BBB-A880-FE41995C9F82": [
+          {
+            "value": "forceDisplayRotationInEFI"
+          },
+          {
+            "value": "boot-args"
+          },
+          {
+            "value": "csr-active-config"
+          },
+          {
+            "value": "bluetoothExternalDongleFailed"
+          },
+          {
+            "value": "bluetoothInternalControllerInfo"
+          }
+        ]
+      }
+    },
+    "LegacySchema": {}
+  },
+  "platformInfo": {
+    "Automatic": true,
+    "CustomMemory": false,
+    "UpdateDataHub": true,
+    "UpdateNVRAM": true,
+    "UpdateSMBIOS": true,
+    "UseRawUuidEncoding": false,
+    "UpdateSMBIOSMode": "Custom",
+    "Generic": {
+      "AdviseFeatures": false,
+      "MLB": "C02053270GU0000AD",
+      "MaxBIOSVersion": false,
+      "ProcessorType": 1537,
+      "ROM": [
+        51,
+        51,
+        51,
+        51,
+        51,
+        51
+      ],
+      "SpoofVendor": false,
+      "SystemMemoryStatus": "Auto",
+      "SystemProductName": "MacBookPro16,3",
+      "SystemSerialNumber": "C02DXLZHP3XY",
+      "SystemUUID": "A36E6157-395A-4FE7-92A7-F0ADE1341F2B",
+      "comment": "支持macOS Catalina 10.15 ~ macOS Sequoia 15"
+    }
+  },
+  "uefi": {
+    "ConnectDrivers": true,
+    "uefiApfs": {
+      "EnableJumpstart": true,
+      "GlobalConnect": false,
+      "HideVerbose": true,
+      "JumpstartHotPlug": false,
+      "MinDate": -1,
+      "MinVersion": -1
+    },
+    "uefiAppleInput": {
+      "AppleEvent": "Builtin",
+      "CustomDelays": false,
+      "GraphicsInputMirroring": true,
+      "KeyInitialDelay": 50,
+      "KeySubsequentDelay": 5,
+      "PointerDwellClickTimeout": 0,
+      "PointerDwellDoubleClickTimeout": 0,
+      "PointerDwellRadius": 0,
+      "PointerPollMask": -1,
+      "PointerPollMax": 80,
+      "PointerPollMin": 10,
+      "PointerSpeedDiv": 1,
+      "PointerSpeedMul": 1
+    },
+    "uefiAudio": {
+      "AudioCodec": 0,
+      "AudioDevice": "PciRoot(0x0)/Pci(0x1b,0x0)",
+      "AudioOutMask": 1,
+      "AudioSupport": false,
+      "DisconnectHda": false,
+      "MaximumGain": -15,
+      "MinimumAssistGain": -30,
+      "MinimumAudibleGain": -55,
+      "PlayChime": "Auto",
+      "ResetTrafficClass": false,
+      "SetupDelay": 0
+    },
+    "uefiDriversItems": [
+      {
+        "Arguments": "",
+        "Comment": "By RapidEFI",
+        "Enabled": true,
+        "LoadEarly": false,
+        "Path": "HfsPlus.efi"
+      },
+      {
+        "Arguments": "",
+        "Comment": "By RapidEFI",
+        "Enabled": true,
+        "LoadEarly": false,
+        "Path": "OpenRuntime.efi"
+      },
+      {
+        "Arguments": "",
+        "Comment": "By RapidEFI",
+        "Enabled": true,
+        "LoadEarly": false,
+        "Path": "OpenCanopy.efi"
+      },
+      {
+        "Arguments": "",
+        "Comment": "By RapidEFI",
+        "Enabled": true,
+        "LoadEarly": false,
+        "Path": "ResetNvramEntry.efi"
+      }
+    ],
+    "uefiInput": {
+      "KeyFiltering": false,
+      "KeyForgetThreshold": 5,
+      "KeySupport": true,
+      "KeySupportMode": "Auto",
+      "KeySwap": false,
+      "PointerSupport": false,
+      "PointerSupportMode": "ASUS",
+      "TimerResolution": 50000
+    },
+    "uefiOutput": {
+      "ClearScreenOnModeSwitch": false,
+      "ConsoleFont": "",
+      "ConsoleMode": "",
+      "DirectGopRendering": false,
+      "ForceResolution": false,
+      "GopBurstMode": false,
+      "GopPassThrough": "Disabled",
+      "IgnoreTextInGraphics": false,
+      "InitialMode": "Auto",
+      "ProvideConsoleGop": true,
+      "ReconnectGraphicsOnConnect": false,
+      "ReconnectOnResChange": false,
+      "ReplaceTabWithSpace": false,
+      "Resolution": "Max",
+      "SanitiseClearScreen": false,
+      "TextRenderer": "BuiltinGraphics",
+      "UgaPassThrough": false,
+      "UIScale": 0
+    },
+    "uefiProtocolOverrides": {
+      "AppleAudio": false,
+      "AppleBootPolicy": false,
+      "AppleDebugLog": false,
+      "AppleEg2Info": false,
+      "AppleFramebufferInfo": false,
+      "AppleImageConversion": false,
+      "AppleImg4Verification": false,
+      "AppleKeyMap": false,
+      "AppleRtcRam": false,
+      "AppleSecureBoot": false,
+      "AppleSmcIo": false,
+      "AppleUserInterfaceTheme": false,
+      "DataHub": false,
+      "DeviceProperties": false,
+      "FirmwareVolume": true,
+      "HashServices": false,
+      "OSInfo": false,
+      "PciIo": false,
+      "UnicodeCollation": false
+    },
+    "uefiQuirks": {
+      "ActivateHpetSupport": false,
+      "DisableSecurityPolicy": false,
+      "EnableVectorAcceleration": true,
+      "EnableVmx": false,
+      "ExitBootServicesDelay": 0,
+      "ForceOcWriteFlash": false,
+      "ForgeUefiSupport": false,
+      "IgnoreInvalidFlexRatio": false,
+      "ReleaseUsbOwnership": false,
+      "ReloadOptionRoms": false,
+      "RequestBootVarRouting": true,
+      "ResizeGpuBars": -1,
+      "ResizeUsePciRbIo": false,
+      "ShimRetainProtocol": false,
+      "TscSyncTimeout": 0,
+      "UnblockFsConnect": false
+    },
+    "uefiReservedMemory": {
+      "ReservedMemory": []
+    }
+  }
+}

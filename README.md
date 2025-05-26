@@ -3,7 +3,28 @@
 [![](https://img.shields.io/badge/OpenCore-0.9.3-blue.svg)](https://github.com/acidanthera/OpenCorePkg)
 [![](https://img.shields.io/badge/translation-english-green.svg)](./docs/README_EN.md)
 
-<img src="./docs/about-this-mac.jpg" style="height: 50vh" />
+<img src="./docs/about-this-mac.png" style="height: 50vh" />
+
+## 工具
+https://github.com/JeoJay127/RapidEFI-Tool.git
+https://github.com/ic005k/OCAuxiliaryTools.git
+https://mackie100projects.altervista.org/download-opencore-configurator/
+https://www.diskgenius.com/
+https://github.com/benbaker76/Hackintool.git
+https://www.drive-image.com/
+
+
+| 名称                      | 简述                                                                                                                         |
+|---------------------------|------------------------------------------------------------------------------------------------------------------------------|
+| [RapidEFI-Tool](https://github.com/JeoJay127/RapidEFI-Tool.git)             | RapidEFI是一款黑苹果OpenCore一键配置工具，参考官方OpenCore指南，支持快速生成适配EFI，简化手动配置流程，适合有一定黑苹果基础的用户，完全免费且永久免费，支持Windows和macOS系统。 |
+| [OpenCore Auxiliary Tools (OCAT)](https://github.com/ic005k/OCAuxiliaryTools.git) | OCAT是一款基于GUI的OpenCore配置文件编辑器，支持自动适配OpenCore新版本，集成EFI分区挂载、配置验证、更新同步等多种实用功能，极大简化OpenCore的配置和维护工作。                   |
+| [OpenCore Configurator](https://mackie100projects.altervista.org/download-opencore-configurator/) | OpenCore Configurator是一款帮助用户全面配置OpenCore启动引导程序的工具，提供图形界面简化配置流程，支持多个macOS版本，体积约10.4MB，下载量较大。                               |
+| [DiskGenius](https://www.diskgenius.com/)                | DiskGenius是一款功能强大的磁盘分区管理和数据恢复软件，支持分区调整、备份恢复、数据恢复等多种功能，广泛应用于硬盘维护和数据保护领。编辑EFI分区域。                                               |
+| [Hackintool](https://github.com/benbaker76/Hackintool.git)                | Hackintool被称为“黑苹果的瑞士军刀”，是一款辅助黑苹果用户进行显卡补丁、USB配置、NVRAM管理等多功能工具，适合有相关知识的用户，非自动化补丁工具。                                   |
+| [R-Drive Image (Drive Image)](https://www.drive-image.com/) | R-Drive Image是一款强大的磁盘映像备份软件，支持创建硬盘或分区的字节级完整镜像，支持多种压缩和加密方式，能够在不重启Windows的情况下完成备份，适合数据保护和灾难恢复。 备份和恢复黑苹果分区，懒人快速安装macos-rdr格式            |
+
+## 注意
+RapidEFI-Tool不要勾选触控板轮询相关的选项，去除SSDT-XOSI.aml
 
 ## ⚙️ 硬件规格
 
